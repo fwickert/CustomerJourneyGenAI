@@ -1,0 +1,173 @@
+﻿@model MarketingViewModel
+
+<script src="~/js/marketing.js" defer></script>
+
+<!-- Modal -->
+<div class="modal fade" id="promptModal" tabindex="-1" aria-labelledby="promptModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="promptModalLabel">Prompt</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="PromptResult" class="pre" data-url="@Url.Action("GetPrompt", "Prompt")">
+                            <span id="resultPrompt"></span>
+                            <div id="spinPrompt" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="row mt-3">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12">
+                    Parameters
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col-1">
+                    Brand : 
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" id="brand" value="@Model.Company" /> 
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col-1">
+                    Product :
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" id="product" value="@Model.Product" />
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col-1">
+                    Language :
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" id="language" value="@Model.Language" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="row mt-3">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary" onclick="GetPersonas();">Get Personas</button>
+                    <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Personas', 'MarketingPlugin');"></i>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <div id="PersonasResult" class="pre" data-url="marketing/personas">
+                        <span id="resultPersonas">
+                            @*   ID	Nom	Comportement d'achat	Points de douleur	Données psychographiques	Niveau de revenu	Type d'emploi	Données démographiques	Intérêts et passe-temps
+                            1	Emma	Achète régulièrement des vêtements de marque, suit les dernières tendances de la mode.	Difficulté à trouver des vêtements qui correspondent à son style unique.	Créative, soucieuse de son image, aime expérimenter avec la mode.	Revenu moyen à élevé	Directrice artistique dans une agence de publicité	Femme de 25 à 35 ans, urbaine	Voyages, photographie, design
+                            2	Lucas	Achète principalement des vêtements en ligne, recherche des bonnes affaires et des promotions.	Difficulté à trouver des vêtements de qualité à des prix abordables.	Pragmatique, orienté vers la valeur, préfère le confort et la praticité.	Revenu moyen	Ingénieur informatique	Homme de 30 à 40 ans, urbain	Jeux vidéo, sports, musique
+                            3	Clara	Achète des vêtements de marques durables et éthiques, évite la fast fashion.	Difficulté à trouver des marques éthiques et durables dans sa région.	Engagée, soucieuse de l'environnement, préfère la qualité à la quantité.	Revenu moyen	Enseignante	Femme de 35 à 45 ans, suburbaine	Randonnée, yoga, lecture
+                            4	Hugo	Achète principalement des vêtements de seconde main, aime les pièces vintage.	Difficulté à trouver des vêtements de seconde main de qualité dans sa région.	Créatif, nostalgique, aime le style rétro et unique.	Revenu moyen	Étudiant en arts	Homme de 18 à 25 ans, urbain	Cinéma, musique alternative, brocantes
+                            5 	Léa	Achète des vêtements de marques locales et soutient les créateurs indépendants.	Difficulté à trouver des marques locales et indépendantes dans sa région.	Créative, curieuse, aime découvrir de nouveaux talents et soutenir l'artisanat local.	Revenu moyen	Graphiste indépendante	Femme de 25 à 35 ans, urbaine	Art, design, musique indie
+                            *@
+                        </span>
+                        <div id="spinPersonas" class="invisible">
+                            <span class="spinner-border" role="status">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="row mt-3">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary" onclick="GetSegments();">Get Segments</button>
+                    <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Segments', 'MarketingPlugin');"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <div id="SegmentsResult" class="pre" data-url="@Url.Action("GetSegments", "Marketing")">
+                        <span id="resultSegments">
+                            @*  PersonaID	Segment	Rational
+                            1	Segment 1	This segment consists of individuals who regularly purchase branded clothing and follow the latest fashion trends. They have a unique style and are creative, image-conscious, and enjoy experimenting with fashion. They have a medium to high income and are employed as an art director in an advertising agency. They are urban women between the ages of 25 and 35. Their interests and hobbies include travel, photography, and design. This segment can be targeted with tailored messages highlighting Gucci's latest fashion trends and unique styles.
+                            2	Segment 2	This segment consists of individuals who primarily purchase clothing online and look for good deals and promotions. They value pragmatism, affordability, comfort, and practicality. They have a medium income and work as computer engineers. They are urban men between the ages of 30 and 40. Their interests and hobbies include video games, sports, and music. This segment can be targeted with messages emphasizing the value and affordability of Gucci's products, as well as the convenience of online shopping.
+                            3	Segment 3	This segment consists of individuals who prioritize purchasing sustainable and ethical fashion, avoiding fast fashion. They have difficulty finding ethical and sustainable brands in their region. They are environmentally conscious, value quality over quantity, and have a medium income. They work as teachers and are suburban women between the ages of 35 and 45. Their interests and hobbies include hiking, yoga, and reading. This segment can be targeted with messages highlighting Gucci's commitment to sustainability and ethical practices, as well as the quality and durability of their products.
+                            These segments were created based on the personas' buying behavior, pain points, psychographic data, income level, employment type, demographic data, and interests and hobbies. By clustering personas with similar characteristics, we can tailor marketing efforts to address their specific needs and preferences, resulting in more effective audience targeting and message tailoring.
+                            *@
+
+                        </span>
+                        <div id="spinSegments" class="invisible">
+                            <span class="spinner-border" role="status">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="row mt-3">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary" onclick="GetRecommendations();">Get Recommendations</button>
+                    <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Recommendations', 'MarketingPlugin');"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <div id="RecommendationsResult" class="pre" data-url="@Url.Action("GetRecommendations", "Marketing")">
+                        <span id="resultRecommendations"></span>
+                        <div id="spinRecommendations" class="invisible">
+                            <span class="spinner-border" role="status">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+   
+
+    function GetSegments() {
+        notifications = document.getElementById('resultSegments');
+        notifications.innerHTML = "";
+        GetView($("#spinSegments"), $("#resultSegments"), $("#SegmentsResult").data("url"), $("#resultPersonas").text());
+    }
+
+    function GetRecommendations() {
+        notifications = document.getElementById('resultRecommendations');
+        notifications.innerHTML = "";
+        GetView($("#spinRecommendations"), $("#resultRecommendations"), $("#RecommendationsResult").data("url"), $("#resultSegments").text());
+    }
+
+
+</script>

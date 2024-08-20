@@ -1,0 +1,209 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn-primary {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.btn-check:active + .btn-primary, .btn-check:checked + .btn-primary, .btn-primary.active, .btn-primary:active, .show > .btn-primary.dropdown-toggle {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem black;
+}
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /*margin-left: 50px;*/
+}
+
+
+.box {
+    background-color: white;
+    color: black;
+    background-size: auto;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    /*ajoute un peu de padding*/
+    padding: 10px;
+    /*ajoute un effet d'ombre*/
+    box-shadow: 0 0 10px 0px black;
+    font-size: 15px;
+}
+
+/*create style to display json file*/
+.pre {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    overflow: auto;
+    white-space: pre-line;
+    word-wrap: break-word;
+    margin-right: 10px;
+}
+
+.box p {
+    margin-bottom: 0px;
+}
+
+.invisible {
+    display: none;
+}
+
+.preInput {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 4;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.row {
+    margin-left: 10px;
+}
+
+ul.persona {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+li.persona {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+    li.persona img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
+
+    li.persona p {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+i.persona {
+    font-size: 5em;
+}
+
+/*
+GRAPH
+
+*/
+
+.link {
+    stroke: #999;
+    stroke-opacity: 0.6;
+    stroke-width: 1.5px;
+}
+
+.node circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    font: 10px sans-serif;
+    pointer-events: none;
+    text-anchor: middle;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+    .logo img {
+        max-height: 60px;
+        -webkit-align-items: center;
+        align-items: center;
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+
+.menu {
+    position: absolute;
+    top: 0;
+    /*padding: 5px;*/
+}
+
+.navbar {
+    padding-bottom: 0 !important;
+}
+
+.nav-link {
+    letter-spacing: 2px;
+    color: black;
+}
+
+    .nav-link:hover {
+        border: none;
+        border-bottom: solid 1px black !important;
+        color: rgb(186,76,39);
+    }
+
+.nav-tabs .nav-link.active {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px rgb(186,76,39) !important;
+    color: rgb(186,76,39);
+}

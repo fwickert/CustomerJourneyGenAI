@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerJourney_API", "CustomerJourney_API\CustomerJourney_API.csproj", "{F84E8E1E-C329-441D-8EB8-757BF8B089AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerJourney_API", "CustomerJourney_API\CustomerJourney_API.csproj", "{F84E8E1E-C329-441D-8EB8-757BF8B089AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerJourneyGenAI_Web", "CustomerJourneyGenAI_Web\CustomerJourneyGenAI_Web.csproj", "{FA6CB4FB-9FA6-40C3-985A-8D9EB809ED2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F84E8E1E-C329-441D-8EB8-757BF8B089AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84E8E1E-C329-441D-8EB8-757BF8B089AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84E8E1E-C329-441D-8EB8-757BF8B089AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6CB4FB-9FA6-40C3-985A-8D9EB809ED2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6CB4FB-9FA6-40C3-985A-8D9EB809ED2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6CB4FB-9FA6-40C3-985A-8D9EB809ED2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6CB4FB-9FA6-40C3-985A-8D9EB809ED2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

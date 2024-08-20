@@ -1,4 +1,5 @@
 ﻿using CustomerJourney.API.Services;
+using CustomerJourney_API.Models.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,19 +24,25 @@ namespace CustomerJourney_API.Controllers
 
         [HttpPost("personas", Name = "personas")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IResult GetPersonas(string brand, string language, int count, string industry)
+        public IResult GetPersonas([FromBody] MarketingRequest request)
         {
             _response.FunctionName = "Personas";
 
             this._logger.LogDebug("Personas receive request.");
 
+            
+            if (string.IsNullOrEmpty(request.Brand) || string.IsNullOrEmpty(request.Language) || string.IsNullOrEmpty(request.Industry))
+            {
+                return TypedResults.BadRequest("Brand, Language and Industry are required.");
+            }
+
             Task.Run(() => _response.GetAsync("Personas",
                 new Dictionary<string, string>()
                 {
-                    { "input", brand },
-                    { "language", language },
-                    { "count", count.ToString() },
-                    { "industry", industry }
+                    { "input", request.Brand },
+                    { "language", request.Language },
+                    { "count", request.Count.ToString() },
+                    { "industry", request.Industry }
                 }));
 
             return TypedResults.Ok("Persona requested");

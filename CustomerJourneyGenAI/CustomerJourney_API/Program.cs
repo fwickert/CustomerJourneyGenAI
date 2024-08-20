@@ -1,4 +1,5 @@
 using CustomerJourney.API.Extensions;
+using CustomerJourney.API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddCorsPolicy();
 
 var app = builder.Build();
 
+app.MapHub<MessageRelayHub>("/messageRelayHub");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -29,6 +32,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 

@@ -15,7 +15,7 @@ namespace CustomerJourney.API.Services
         private readonly IHubContext<MessageRelayHub> _messageRelayHubContext;
         private readonly Kernel _kernel;
         private string _pluginsDirectory = string.Empty;
-        private readonly int DELAY = 0;
+        private readonly int DELAY = 25;
 
         public string PluginName { get; set; } = string.Empty;
         public string FunctionName { get; set; } = string.Empty;
@@ -65,20 +65,20 @@ namespace CustomerJourney.API.Services
 
             await foreach (StreamingChatMessageContent contentPiece in _kernel.InvokeStreamingAsync<StreamingChatMessageContent>(_kernel.Plugins[this.PluginName][this.FunctionName], arguments))
             {
-                await this.UpdateMessageOnClient(messageResponse, chatId);
+                await this.UpdateMessageOnClient(messageResponse);
                 messageResponse.State = "InProgress";
 
                 if (!string.IsNullOrEmpty(contentPiece.Content))
                 {
                     messageResponse.Content += contentPiece.Content;
-                    await this.UpdateMessageOnClient(messageResponse, chatId);
+                    await this.UpdateMessageOnClient(messageResponse);
                     Console.Write(contentPiece.Content);
                     await Task.Delay(DELAY);
                 }
             }
            
             messageResponse.State = "End";
-            await this.UpdateMessageOnClient(messageResponse, chatId);
+            await this.UpdateMessageOnClient(messageResponse);
             return messageResponse;
         }
 
@@ -86,9 +86,9 @@ namespace CustomerJourney.API.Services
         /// Update the response on the client.
         /// </summary>
         /// <param name="message">The message</param>
-        private async Task UpdateMessageOnClient(MessageResponse message, string chatId)
+        private async Task UpdateMessageOnClient(MessageResponse message)
         {
-            await this._messageRelayHubContext.Clients.All.SendAsync("ReceiveMessageUpdate", message);
+            await this._messageRelayHubContext.Clients.All.SendAsync(message.WhatAbout, message.Content);
         }
 
 
