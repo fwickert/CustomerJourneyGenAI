@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "description": "Analyzes the feelings of a text",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 600,
+      "temperature": 0.0,
+      "top_p": 0.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "input",
+      "description": "The text to analyze for feelings",
+      "default": ""
+    },
+    {
+      "name": "language",
+      "description": "The language to analyze for feelings",
+      "default": ""
+    }
+  ]
+}

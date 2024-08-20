@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "description": "Generate a new chapter of a Book",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 500,
+      "temperature": 1.0,
+      "top_p": 0.5,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }  
+  },
+  "input_variables": [
+    {
+      "name": "input",
+      "description": "The brand that will be the overall context of the book",
+      "default": ""
+    },
+    {
+      "name": "memory",
+      "description": "context for which to generate new chapter",
+      "default": ""
+    },
+    {
+      "name": "language",
+      "description": "the language for which to generate the chapter",
+      "default": ""
+    },
+    {
+      "name": "last_purchase",
+      "description": "the last purchased product for which to generate the chapter",
+      "default": ""
+    }
+  ]
+}

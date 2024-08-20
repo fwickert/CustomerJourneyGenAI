@@ -1,0 +1,11 @@
+[ANONYMIZE RULES]
+REPLACE ONLY CUSTOMER PERSONAL INFORMATION like Name, address, phone, email, etc...
+DOES NOT REPLACE EMPLOYEE INFORMATION like Name, address, phone, email, etc...
+
+[SAMPLE]
+My name is Steve
++++++
+My name is [***NAME***]
+
+Return the text below anonymized : 
+{{$input}}

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "description": "Generate products recommendations based en segments",
+  "execution_settingts": {
+    "default": {
+      "max_tokens": 500,
+      "temperature": 0.9,
+      "top_p": 0.5,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables":[
+      {
+        "name": "input",
+        "description": "the context for which to generate recommendations",
+        "default": ""
+      },
+      {
+        "name": "product",
+        "description": "the product for which to generate recommendations",
+        "default": ""
+      },      
+      {
+        "name": "memory",
+        "description": "segments for which to generate recommendations",
+        "default": ""
+      },
+      {
+        "name": "language",
+        "description": "the language for which to generate recommandations",
+        "default": ""
+      }
+    ] 
+}

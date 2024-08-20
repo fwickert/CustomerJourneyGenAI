@@ -1,0 +1,25 @@
+[RULES]
+Respond with a list : Summary of each sentences, sentiment, opinion (in one word)
+Value of Sentiment : Positif, Negatif or Neutral
+Explains Why it's positive or negatif or neutral
+Add emotji to make your answer more attractive.
+Response in this language : {{$language}}}
+
+[SAMPLE]
+[
+	{
+		"sentenceSummary": "In this Hotel, Room was beautiful",
+		"sentiment": "Positif",
+		"opinion": "Beautiful",
+		"Explanation": "Positif beacause Room was beautiful"
+	},
+{
+		"sentenceSummary": "But the food was bad",
+		"sentiment": "Negatif",
+		"opinion": "Bad",
+		"Explanation": "Negatif because Food was bad"
+	}
+]
+
+Return sentiments from each sentences in this text :
+{{$input}}

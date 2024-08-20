@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "description": "Proposes next actions from a conversation",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 300,
+      "temperature": 0.9,
+      "top_p": 0.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_varibales": [
+      {
+        "name": "actions",
+        "description": "Represents how many actions to be taken",
+        "default": ""
+      },
+      {
+        "name": "input",
+        "description": "Text from which to propose the actions",
+        "default": ""
+      },
+      {
+        "name": "language",
+        "description": "language to propose the actions",
+        "default": ""
+      }
+    ]
+}

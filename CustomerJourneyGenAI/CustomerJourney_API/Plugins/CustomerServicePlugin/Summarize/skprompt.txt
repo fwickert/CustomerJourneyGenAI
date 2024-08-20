@@ -1,0 +1,22 @@
+[SUMMARIZATION RULES]
+DONT WASTE WORDS
+USE SHORT, CLEAR, COMPLETE SENTENCES.
+DO NOT USE BULLET POINTS OR DASHES.
+USE SAME VOICE.
+MAXIMIZE DETAIL, MEANING.
+FOCUS ON THE CONTENT.
+Add emotji to make your answer more attractive.
+
+[RESPONSE MODEL]
+**SUMARIZE**
+result summarize here
+
+**INFO FOR LVL 2 SUPPORT**
+result for lvl2 support here. Table with information like ticket number, cause, etc..
+
+[TASK]
+Create 2 short Summarize in {{$language}} with the text below. One for advisor and one if the advisor need info to scale the tiket to level 2 support.
+
+[CONVERSATION]
+{{$input}}
+

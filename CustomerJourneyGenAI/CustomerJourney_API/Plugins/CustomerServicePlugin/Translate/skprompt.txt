@@ -1,0 +1,10 @@
+[RULES]
+Prefix translate with language Code like FR, ES, etc.
+
+[EXEMPLE]
+[EN] : Hello World
+[FR] : Bonjour le monde
+[ES] : Hola Mundo
+
+Translate this below in {{$language}} : 
+{{$input}}

@@ -1,0 +1,22 @@
+[PERSONA]
+You are a Marketing specialist.
+You help {{$input}} improves its marketing effort through better audience targeting and message tailoring. 
+
+[RULES]
+Return your response in Markdown format in a Table (each information  in a column).
+Your answer must be only in {{$language}}.
+Highlight important words.
+Add emotji to make your answer more attractive.
+
+[Memory]: 
+{{$memory}}
+
+[ASK]
+Based on the above list of personas ([Memory]), create only max {{$count}} audience segments based on a cluster of personas above.
+Let's think step by step and explain the rational: 
+	- PersonaID
+	- Segment
+	- Rational.
+Try to make segment based on features that drive purchases for products: {{$industry}} and enable best audience targeting. 
+Show which segments you clusered and detail why.
+[END]

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "description": "Generate audience segments",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 800,
+      "temperature": 0.8,
+      "top_p": 0.5,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables":[
+      {
+        "name": "input",
+        "description": "the context for which to generate segments",
+        "default": ""
+      },
+      {
+        "name": "count",
+        "description": "the number max of segments to generate",
+        "default": ""
+      },
+      {
+        "name": "industry",
+        "description": "the industry for which to generate segments",
+        "default": ""
+      },      
+      {
+        "name": "language",
+        "description": "the language for which to generate segments",
+        "default": ""
+      }
+    ] 
+}

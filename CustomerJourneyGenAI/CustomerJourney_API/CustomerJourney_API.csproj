@@ -7,11 +7,101 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <None Remove="Plugins\BookPlugin\Chapter\skprompt.txt" />
+    <None Remove="Plugins\BookPlugin\StartBook\skprompt.txt" />
+    <None Remove="Plugins\CustomerHistoryPlugin\Recommendations\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\Anonymize\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\ComposeMail\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\NextActions\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\Sentiment\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\Summarize\skprompt.txt" />
+    <None Remove="Plugins\CustomerServicePlugin\Translate\skprompt.txt" />
+    <None Remove="Plugins\MarketingPlugin\Personas\skprompt.txt" />
+    <None Remove="Plugins\MarketingPlugin\Recommendations\skprompt.txt" />
+    <None Remove="Plugins\MarketingPlugin\Segments\skprompt.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Content Include="Plugins\BookPlugin\Chapter\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\BookPlugin\StartBook\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerHistoryPlugin\Recommendations\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\Anonymize\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\ComposeMail\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\NextActions\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\Sentiment\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\Summarize\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\CustomerServicePlugin\Translate\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\MarketingPlugin\Personas\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\MarketingPlugin\Recommendations\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\MarketingPlugin\Segments\skprompt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.17.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Plugins\BookPlugin\Chapter\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\BookPlugin\StartBook\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerHistoryPlugin\Recommendations\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\Anonymize\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\ComposeMail\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\NextActions\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\Sentiment\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\Summarize\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\CustomerServicePlugin\Translate\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\MarketingPlugin\Personas\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\MarketingPlugin\Recommendations\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Plugins\MarketingPlugin\Segments\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

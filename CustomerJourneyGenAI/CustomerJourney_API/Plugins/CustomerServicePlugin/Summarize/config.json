@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "description": "summarizes a text",
+  "excution_settings": {
+    "default": {
+      "max_tokens": 300,
+      "temperature": 1,
+      "top_p": 0.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "input",
+      "description": "Text to be summarized",
+      "default": ""
+    },
+    {
+      "name": "language",
+      "description": "Language used to summarize",
+      "default": "en"
+    }
+  ]
+}
