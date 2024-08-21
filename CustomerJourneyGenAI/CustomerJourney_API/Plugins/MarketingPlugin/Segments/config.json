@@ -10,26 +10,31 @@
       "frequency_penalty": 0.0
     }
   },
-  "input_variables":[
-      {
-        "name": "input",
-        "description": "the context for which to generate segments",
-        "default": ""
-      },
-      {
-        "name": "count",
-        "description": "the number max of segments to generate",
-        "default": ""
-      },
-      {
-        "name": "industry",
-        "description": "the industry for which to generate segments",
-        "default": ""
-      },      
-      {
-        "name": "language",
-        "description": "the language for which to generate segments",
-        "default": ""
-      }
-    ] 
+  "input_variables": [
+    {
+      "name": "brand",
+      "description": "the brand context for which to generate segments",
+      "default": ""
+    },
+    {
+      "name": "count",
+      "description": "the number max of segments to generate",
+      "default": ""
+    },
+    {
+      "name": "industry",
+      "description": "the industry for which to generate segments",
+      "default": ""
+    },
+    {
+      "name": "language",
+      "description": "the language for which to generate segments",
+      "default": ""
+    },
+    {
+      "name": "memory",
+      "description": "the list of personas",
+      "default": ""
+    }
+  ]
 }

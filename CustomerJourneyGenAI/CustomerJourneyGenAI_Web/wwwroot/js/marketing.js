@@ -15,15 +15,52 @@ connection.on("Personas", function (messageResponse) {
     $("#resultPersonas").html(htmlMessage);
 });
 
+connection.on("Segments", function (messageResponse) {
+    OnlySpinOff($("#spinSegments"));
+
+    const htmlMessage = marked.parse(messageResponse);
+    $("#resultSegments").html(htmlMessage);
+});
+
+connection.on("Recommendations", function (messageResponse) {
+    OnlySpinOff($("#spinRecommendations"));
+
+    const htmlMessage = marked.parse(messageResponse);
+    $("#resultRecommendations").html(htmlMessage);
+});
+
+
 
 function GetPersonas() {
     var d = {        
         brand: $("#brand").val(),
         industry: $("#product").val(),
         language: $("#language").val(),
-        count: 3
+        count: 5
     }
-    postAPI($("#spinPersonas"), $("#resultPersonas"), $("#PersonasResult").data("url"), d);
+    postAPI($("#spinPersonas"), $("#resultPersonas"), $("#PersonasResult").data("url"), d);    
+}
+
+function GetSegments() {
+    var d = {
+        brand: $("#brand").val(),
+        industry: $("#product").val(),
+        language: $("#language").val(),
+        count: 3,
+        memory: $("#resultPersonas").text(),
+    }
+    postAPI($("#spinSegments"), $("#resultSegments"), $("#SegmentsResult").data("url"), d);
+}
+
+//same for GetRecommendations
+function GetRecommendations() {
+    var d = {
+        brand: $("#brand").val(),
+        industry: $("#product").val(),
+        language: $("#language").val(),
+        memory: $("#resultSegments").text(),
+    }
+    postAPI($("#spinRecommendations"), $("#resultRecommendations"), $("#RecommendationsResult").data("url"), d);
 }
 
 function GetView($spin, $result, $url, $data) {

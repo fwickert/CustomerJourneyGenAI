@@ -20,7 +20,7 @@ switch (env) {
 function postAPI($spin, $result, url, d) {
     OnlySpinOn($spin);
     $.ajax({
-        url: domainBase + url,
+        url: domainBase + url + "?connectionId=" + connection.connectionId,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(d),

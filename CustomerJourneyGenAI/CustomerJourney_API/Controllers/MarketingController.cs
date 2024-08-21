@@ -24,7 +24,7 @@ namespace CustomerJourney_API.Controllers
 
         [HttpPost("personas", Name = "personas")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IResult GetPersonas([FromBody] MarketingRequest request)
+        public IResult GetPersonas([FromBody] MarketingRequest request, string connectionId)
         {
             _response.FunctionName = "Personas";
 
@@ -43,9 +43,62 @@ namespace CustomerJourney_API.Controllers
                     { "language", request.Language },
                     { "count", request.Count.ToString() },
                     { "industry", request.Industry }
-                }));
+                }, connectionId)) ;
 
             return TypedResults.Ok("Persona requested");
+        }
+
+        //Same for GetSegments
+        [HttpPost("segments", Name = "segments")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IResult GetSegments([FromBody] MarketingRequest request, string connectionId)
+        {
+            _response.FunctionName = "Segments";
+
+            this._logger.LogDebug("Segments receive request.");
+
+            if (string.IsNullOrEmpty(request.Brand) || string.IsNullOrEmpty(request.Language) || string.IsNullOrEmpty(request.Industry) || string.IsNullOrEmpty(request.Memory))
+            {
+                return TypedResults.BadRequest("Personas and other info are required.");
+            }
+
+            Task.Run(() => _response.GetAsync("Segments",
+                new Dictionary<string, string>()
+                {
+                    { "brand", request.Brand },
+                    { "language", request.Language },
+                    { "count", request.Count.ToString() },
+                    { "industry", request.Industry },
+                    { "memory", request.Memory }
+                }, connectionId));
+
+            return TypedResults.Ok("Segments requested");
+        }
+
+        //same for GetRecommendations
+        [HttpPost("recommendations", Name = "recommendations")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IResult GetRecommendations([FromBody] MarketingRequest request, string connectionId)
+        {
+            _response.FunctionName = "Recommendations";
+
+            this._logger.LogDebug("Recommendations receive request.");
+
+            if (string.IsNullOrEmpty(request.Brand) || string.IsNullOrEmpty(request.Language) || string.IsNullOrEmpty(request.Industry) || string.IsNullOrEmpty(request.Memory))
+            {
+                return TypedResults.BadRequest("Personas and other info are required.");
+            }
+
+            Task.Run(() => _response.GetAsync("Recommendations",
+                new Dictionary<string, string>()
+                {
+                    { "brand", request.Brand },
+                    { "language", request.Language },                    
+                    { "industry", request.Industry },
+                    { "memory", request.Memory }
+                }, connectionId));
+
+            return TypedResults.Ok("Recommendations requested");
         }
 
     }

@@ -12,12 +12,12 @@
   },
   "input_variables":[
       {
-        "name": "input",
-        "description": "the context for which to generate recommendations",
+        "name": "brand",
+        "description": "the brand for which to generate recommendations",
         "default": ""
       },
       {
-        "name": "product",
+        "name": "industry",
         "description": "the product for which to generate recommendations",
         "default": ""
       },      

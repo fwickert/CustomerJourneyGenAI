@@ -109,7 +109,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mt-3 mb-3">
-                    <div id="SegmentsResult" class="pre" data-url="@Url.Action("GetSegments", "Marketing")">
+                    <div id="SegmentsResult" class="pre" data-url="marketing/segments">
                         <span id="resultSegments">
                             @*  PersonaID	Segment	Rational
                             1	Segment 1	This segment consists of individuals who regularly purchase branded clothing and follow the latest fashion trends. They have a unique style and are creative, image-conscious, and enjoy experimenting with fashion. They have a medium to high income and are employed as an art director in an advertising agency. They are urban women between the ages of 25 and 35. Their interests and hobbies include travel, photography, and design. This segment can be targeted with tailored messages highlighting Gucci's latest fashion trends and unique styles.
@@ -141,7 +141,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mt-3 mb-3">
-                    <div id="RecommendationsResult" class="pre" data-url="@Url.Action("GetRecommendations", "Marketing")">
+                    <div id="RecommendationsResult" class="pre" data-url="marketing/recommendations">
                         <span id="resultRecommendations"></span>
                         <div id="spinRecommendations" class="invisible">
                             <span class="spinner-border" role="status">
@@ -154,20 +154,3 @@
     </div>
 </div>
 
-<script>
-   
-
-    function GetSegments() {
-        notifications = document.getElementById('resultSegments');
-        notifications.innerHTML = "";
-        GetView($("#spinSegments"), $("#resultSegments"), $("#SegmentsResult").data("url"), $("#resultPersonas").text());
-    }
-
-    function GetRecommendations() {
-        notifications = document.getElementById('resultRecommendations');
-        notifications.innerHTML = "";
-        GetView($("#spinRecommendations"), $("#resultRecommendations"), $("#RecommendationsResult").data("url"), $("#resultSegments").text());
-    }
-
-
-</script>

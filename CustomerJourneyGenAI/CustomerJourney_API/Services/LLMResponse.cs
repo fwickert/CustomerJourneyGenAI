@@ -31,7 +31,7 @@ namespace CustomerJourney.API.Services
         }
 
         // Method to handle the GetAsync request
-        public async Task GetAsync(string whatAbout, Dictionary<string, string> variablesContext)
+        public async Task GetAsync(string whatAbout, Dictionary<string, string> variablesContext, string connectionId)
         {
             var arguments = new KernelArguments();
 
@@ -40,7 +40,7 @@ namespace CustomerJourney.API.Services
                 arguments[item.Key] = item.Value;
             }
 
-            await StreamResponseToClient("", whatAbout, arguments);
+            await StreamResponseToClient("", whatAbout, arguments, connectionId);
 
         }
 
@@ -53,7 +53,7 @@ namespace CustomerJourney.API.Services
         }
 
         // Method to stream the response to the client
-        private async Task<MessageResponse> StreamResponseToClient(string chatId, string whatAbout, KernelArguments arguments)
+        private async Task<MessageResponse> StreamResponseToClient(string chatId, string whatAbout, KernelArguments arguments, string connectionId)
         {
 
             MessageResponse messageResponse = new MessageResponse
@@ -65,20 +65,20 @@ namespace CustomerJourney.API.Services
 
             await foreach (StreamingChatMessageContent contentPiece in _kernel.InvokeStreamingAsync<StreamingChatMessageContent>(_kernel.Plugins[this.PluginName][this.FunctionName], arguments))
             {
-                await this.UpdateMessageOnClient(messageResponse);
+                await this.UpdateMessageOnClient(messageResponse, connectionId);
                 messageResponse.State = "InProgress";
 
                 if (!string.IsNullOrEmpty(contentPiece.Content))
                 {
                     messageResponse.Content += contentPiece.Content;
-                    await this.UpdateMessageOnClient(messageResponse);
+                    await this.UpdateMessageOnClient(messageResponse, connectionId);
                     Console.Write(contentPiece.Content);
                     await Task.Delay(DELAY);
                 }
             }
            
             messageResponse.State = "End";
-            await this.UpdateMessageOnClient(messageResponse);
+            await this.UpdateMessageOnClient(messageResponse, connectionId);
             return messageResponse;
         }
 
@@ -86,9 +86,9 @@ namespace CustomerJourney.API.Services
         /// Update the response on the client.
         /// </summary>
         /// <param name="message">The message</param>
-        private async Task UpdateMessageOnClient(MessageResponse message)
+        private async Task UpdateMessageOnClient(MessageResponse message, string connectionId)
         {
-            await this._messageRelayHubContext.Clients.All.SendAsync(message.WhatAbout, message.Content);
+            await this._messageRelayHubContext.Clients.Client(connectionId).SendAsync(message.WhatAbout, message.Content);
         }
 
 

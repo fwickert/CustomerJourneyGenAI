@@ -2,7 +2,7 @@
 {
     public class MarketingRequest
     {
-        public string? Text { get; set; }
+        public string? Memory { get; set; }
 
         public string? Brand { get; set; }
 
