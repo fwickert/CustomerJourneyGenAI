@@ -17,7 +17,7 @@ switch (env) {
 
 
 
-function postAPI($spin, $result, url, d) {
+function postAPIAsync($spin, $result, url, d) {
     OnlySpinOn($spin);
     $.ajax({
         url: domainBase + url + "?connectionId=" + connection.connectionId,
@@ -32,7 +32,27 @@ function postAPI($spin, $result, url, d) {
         },
         error: function (error) {
             console.log(error);
+        }
+    });
+}
 
+function postAPI($spin, $result, url, d) {
+    OnlySpinOn($spin);
+    $.ajax({
+        url: domainBase + url + "?connectionId=" + connection.connectionId,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(d),
+        success: function (response) {
+            OnlySpinOff($spin);
+
+            $result.css("display", "inherit");
+            $result.removeClass("invisible");
+            $result.html(response);
+
+        },
+        error: function (error) {
+            console.log(error);
         }
     });
 }

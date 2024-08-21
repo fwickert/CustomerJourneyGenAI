@@ -12,9 +12,9 @@ namespace CustomerJourneyGenAI_Web.Controllers
 
         private const string INDUSTRY = "Watch and jewelry";
 
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MarketingController> _logger;
 
-        public MarketingController(ILogger<HomeController> logger)
+        public MarketingController(ILogger<MarketingController> logger)
         {
             _logger = logger;
         }

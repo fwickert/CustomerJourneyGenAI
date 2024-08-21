@@ -18,5 +18,5 @@ result for lvl2 support here. Table with information like ticket number, cause, 
 Create 2 short Summarize in {{$language}} with the text below. One for advisor and one if the advisor need info to scale the tiket to level 2 support.
 
 [CONVERSATION]
-{{$input}}
+{{$conversation}}
 

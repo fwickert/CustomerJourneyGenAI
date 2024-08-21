@@ -1,12 +1,4 @@
-﻿const connectionHubUrl = new URL('messageRelayHub', domainHub);
-
-const connection = new signalR.HubConnectionBuilder().withUrl(connectionHubUrl.href).withAutomaticReconnect().withHubProtocol(new signalR.JsonHubProtocol()).build();
-
-connection.start().then(function () {
-    console.log("connected");
-}).catch(function (err) {
-    return console.error(err.toString());
-});
+﻿
 
 connection.on("Personas", function (messageResponse) {
     OnlySpinOff($("#spinPersonas"));
@@ -38,7 +30,7 @@ function GetPersonas() {
         language: $("#language").val(),
         count: 5
     }
-    postAPI($("#spinPersonas"), $("#resultPersonas"), $("#PersonasResult").data("url"), d);    
+    postAPIAsync($("#spinPersonas"), $("#resultPersonas"), $("#PersonasResult").data("url"), d);    
 }
 
 function GetSegments() {
@@ -49,7 +41,7 @@ function GetSegments() {
         count: 3,
         memory: $("#resultPersonas").text(),
     }
-    postAPI($("#spinSegments"), $("#resultSegments"), $("#SegmentsResult").data("url"), d);
+    postAPIAsync($("#spinSegments"), $("#resultSegments"), $("#SegmentsResult").data("url"), d);
 }
 
 //same for GetRecommendations
@@ -60,7 +52,7 @@ function GetRecommendations() {
         language: $("#language").val(),
         memory: $("#resultSegments").text(),
     }
-    postAPI($("#spinRecommendations"), $("#resultRecommendations"), $("#RecommendationsResult").data("url"), d);
+    postAPIAsync($("#spinRecommendations"), $("#resultRecommendations"), $("#RecommendationsResult").data("url"), d);
 }
 
 function GetView($spin, $result, $url, $data) {

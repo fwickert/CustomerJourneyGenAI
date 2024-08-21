@@ -12,8 +12,8 @@
   },
   "input_variables": [
     {
-      "name": "input",
-      "description": "The text to analyze for feelings",
+      "name": "conversation",
+      "description": "The text to analyze for sentiments analysis",
       "default": ""
     },
     {

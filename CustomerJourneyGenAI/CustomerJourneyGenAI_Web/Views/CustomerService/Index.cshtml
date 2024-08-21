@@ -1,0 +1,185 @@
+﻿
+<script src="~/js/transcript.js" defer></script>
+
+<!-- Modal -->
+<div class="modal fade" id="promptModal" tabindex="-1" aria-labelledby="promptModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="promptModalLabel">Prompt</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="PromptResult" class="pre" data-url="@Url.Action("GetPrompt", "Prompt")">
+                            <span id="resultPrompt"></span>
+                            <div id="spinPrompt" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-5 fixe">
+        <div class="row mb-2">
+            <div class="col-2"><span><strong>Record</strong></span></div>
+            <div class="col-4"><audio src="https://storagenstein.blob.core.windows.net/audio/Luxor.wav?sp=r&st=2023-05-03T07:07:54Z&se=2043-05-03T15:07:54Z&spr=https&sv=2021-12-02&sr=c&sig=t9juWFhjftwfim0mxj0dT1A4egsQ6ljNl%2B1esfW1o%2FQ%3D" controls></audio></div>
+        </div>
+        <div class="row col-3 mb-4">
+            <button class="btn btn-primary" onclick="GetTranscript();">Get the transcript</button>
+        </div>
+        <div id="TranscriptResult" class="box text-left invisible" data-url="CustomerService/transcript">
+            <span id="resultTranscript"></span>
+        </div>
+        <div id="spinTranscript" class="invisible">
+            <span class="spinner-border" role="status">
+            </span>
+        </div>
+    </div>
+
+    <div class="col-7">
+        <div class="row">
+            <div class="row m-3">
+                <div class="col-2">
+                    Language :
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" id="language" value="English" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="GetSummarize();">Summarize</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Summarize', 'CustomerServicePlugin');"></i>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="SummarizeResult" class="pre" data-url="CustomerService/summarize">
+                    <span id="resultSummarize"></span>
+                    <div id="spinSummarize" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="GetSentiment();">Sentiment</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Sentiment', 'CustomerServicePlugin');"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="SentimentResult" class="pre" data-url="CustomerService/sentiment">
+                    <span id="resultSentiment"></span>
+                    <div id="spinSentiment" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <button class="btn btn-primary" onclick="GetTranslate();">Translate</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Translate', 'CustomerServicePlugin');"></i>
+            </div>
+            <div class="col-2">
+                Language :
+            </div>
+            <div class="col-5">
+                <input class="form-control" type="text" id="languageTranslate" value="fr, es" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="TranslateResult" class="pre" data-url="CustomerService/translate">
+                    <span id="resultTranslate"></span>
+                    <div id="spinTranslate" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="GetAnonymize();">Anonymize</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Anonymize', 'CustomerServicePlugin');"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="AnonymizeResult" class="pre" data-url="CustomerService/anonymize">
+                    <span id="resultAnonymize"></span>
+                    <div id="spinAnonymize" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="GetNextActions();">Next Actions</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('NextActions', 'CustomerServicePlugin');"></i>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="NextActionsResult" class="pre" data-url="CustomerService/nextactions">
+                    <span id="resultNextActions"></span>
+                    <div id="spinNextActions" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="GetComposeMail();">Compose Mail</button>
+                <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('ComposeMail', 'CustomerServicePlugin');"></i>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 mb-3">
+                <div id="ComposeMailResult" class="pre" data-url="CustomerService/composemail">
+                    <span id="resultComposeMail"></span>
+                    <div id="spinComposeMail" class="invisible">
+                        <span class="spinner-border" role="status">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

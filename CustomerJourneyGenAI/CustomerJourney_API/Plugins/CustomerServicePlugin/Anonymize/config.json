@@ -11,10 +11,10 @@
     }
   },
   "input_variables": [
-      {
-        "name": "input",
-        "description": "Text to be anoymized",
-        "default": ""
-      }
-    ]  
+    {
+      "name": "conversation",
+      "description": "Text to be anonymized",
+      "default": ""
+    }
+  ]  
 }

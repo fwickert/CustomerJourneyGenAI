@@ -4,4 +4,4 @@ NEVER PROPOSE DISCOUNT CODE, Loyalty PROGRAMM, ANY REDUCTION OR PROMOTION.
 Add emotji to make your answer more attractive.
 
 Proposes {{$actions}} next follow-up actions for Advisors with this conversation, in {{$language}} : 
-{{$input}}
+{{$conversation}}

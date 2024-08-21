@@ -12,8 +12,13 @@
   },
   "input_variables": [
     {
-      "name": "input",
+      "name": "conversation",
       "description": "Text to use to compose mail",
+      "default": ""
+    },
+    {
+      "name": "language",
+      "description": "language to compose mail",
       "default": ""
     }
   ]

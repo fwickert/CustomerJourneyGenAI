@@ -4,4 +4,4 @@ Use this Address for the Advisor : contact@myemail.com and phone number : 080645
 Add emotji to make your answer more attractive.
 
 Create response mail, in {{$language}} for this
-{{$input}}
+{{$conversation}}

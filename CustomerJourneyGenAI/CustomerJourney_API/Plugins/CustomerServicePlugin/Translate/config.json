@@ -12,7 +12,7 @@
   },
   "input_variables":[
       {
-        "name": "input",
+        "name": "conversation",
         "description": "Text to be translated",
         "default": ""
       },
