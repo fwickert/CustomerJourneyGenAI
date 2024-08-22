@@ -5,6 +5,23 @@
     $("#resultReco").html(htmlMessage);
 });
 
+connection.on("CreateBook", function (messageResponse) {
+    OnlySpinOff($("#spinBook"));
+
+    const htmlMessage = marked.parse(messageResponse);
+    $("#resultBook").html(htmlMessage);
+});
+
+//same for addchapter
+connection.on("AddChapter", function (messageResponse) {
+    OnlySpinOff($("#spinChapter"));
+
+    const htmlMessage = marked.parse(messageResponse);
+    $("#resultChapter").html(htmlMessage);
+});
+
+
+
 function GetPersona(persona) {
     _persona = persona;
     //Use Jquery to remove active uin class
@@ -12,12 +29,12 @@ function GetPersona(persona) {
     //Add active class to the selected persona
     $("#" + persona).addClass("active");
 
-   
-   GetHistory(persona);
 
-   CreateGraph(persona);
+    GetHistory(persona);
 
-   
+    CreateGraph(persona);
+
+
 }
 
 function GetHistory(persona) {
@@ -28,13 +45,38 @@ function GetHistory(persona) {
 
 function GetRecommendations() {
     var d = {
-        brand: "Luxor",        
+        brand: "Luxor",
         language: $("#language").val(),
         history: $("#HistoryResult").text(),
     }
     postAPIAsync($("#spinReco"), $("#resultReco"), $("#RecoResult").data("url"), d);
 }
 
+
+function CreateBook() {
+    var d = {
+        brand: "Luxor",
+        language: $("#language").val(),
+        history: $("#HistoryResult").text(),
+        bookType: $("#bookType").val()
+    }
+    if (d.bookType == "") {
+        d.bookType = "Medieval Fantastic";
+    }
+    postAPIAsync($("#spinBook"), $("#resultBook"), $("#BookResult").data("url"), d);
+}
+
+
+//add chapter
+function AddChapter() {
+    var d = {
+        brand: "Luxor",
+        language: $("#language").val(),
+        history: $("#HistoryResult").text(),
+        lastPurchase: $("#product").val(),
+    }
+    postAPIAsync($("#spinChapter"), $("#resultChapter"), $("#ChapterResult").data("url"), d);
+}
 
 function CreateGraph(id) {
 

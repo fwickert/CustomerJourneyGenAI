@@ -13,12 +13,12 @@
   "input_variables": [
 
     {
-      "name": "input",
+      "name": "brand",
       "description": "The brand that will be the overall context of the book",
       "default": ""
     },
     {
-      "name": "memory",
+      "name": "history",
       "description": "context for which to generate new book",
       "default": ""
     },

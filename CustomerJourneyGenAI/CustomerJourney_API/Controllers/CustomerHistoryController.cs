@@ -64,7 +64,7 @@ namespace CustomerJourney.API.Controllers
         }
 
         //function to getRecommendation based on plugin like marketing or customerservice
-        [HttpPost("customerRecommendations", Name = "CustomerRecommendations")]
+        [HttpPost("customerRecommendations", Name = "customerRecommendations")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IResult GetSummarize([FromBody] CustomerHistoryRequest request, string connectionId)
         {
@@ -89,9 +89,59 @@ namespace CustomerJourney.API.Controllers
             return TypedResults.Ok("Recommendations requested");
         }
 
+        //createBook
+        [HttpPost("createBook", Name = "createBook")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IResult CreateBook([FromBody] BookRequest request, string connectionId)
+        {
+            _response.PluginName = "BookPlugin";
+            _response.FunctionName = "StartBook";
 
+            this._logger.LogDebug("CreateBook receive request.");
 
+            if (string.IsNullOrEmpty(request.Brand) || string.IsNullOrEmpty(request.History) || string.IsNullOrEmpty(request.Language) || string.IsNullOrEmpty(request.BookType))
+            {
+                return TypedResults.BadRequest("Brand, Context, Language, and BookType are required.");
+            }
 
+            Task.Run(() => _response.GetAsync("CreateBook",
+                new Dictionary<string, string>()
+                {
+                    { "brand", request.Brand },
+                    { "history", request.History },
+                    { "language", request.Language },
+                    { "bookType", request.BookType }
+                }, connectionId));
+
+            return TypedResults.Ok("CreateBook requested");
+        }
+
+        //addchapter
+        [HttpPost("addChapter", Name = "addChapter")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IResult AddChapter([FromBody] BookRequest request, string connectionId)
+        {
+            _response.PluginName = "BookPlugin";
+            _response.FunctionName = "Chapter";
+
+            this._logger.LogDebug("AddChapter receive request.");
+
+            if (string.IsNullOrEmpty(request.Brand) || string.IsNullOrEmpty(request.History) || string.IsNullOrEmpty(request.Language) || string.IsNullOrEmpty(request.LastPurchase))
+            {
+                return TypedResults.BadRequest("Brand, Context, Language, and BookType are required.");
+            }
+
+            Task.Run(() => _response.GetAsync("AddChapter",
+                new Dictionary<string, string>()
+                {
+                    { "brand", request.Brand },
+                    { "history", request.History },
+                    { "language", request.Language },
+                    { "lastPurchase", request.LastPurchase}
+                }, connectionId));
+
+            return TypedResults.Ok("AddChapter requested");
+        }
 
     }
 }

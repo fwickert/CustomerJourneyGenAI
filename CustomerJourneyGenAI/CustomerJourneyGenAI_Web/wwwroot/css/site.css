@@ -76,6 +76,7 @@ body {
     white-space: pre-line;
     word-wrap: break-word;
     margin-right: 10px;
+    max-width: 1300px;
 }
 
 .box p {

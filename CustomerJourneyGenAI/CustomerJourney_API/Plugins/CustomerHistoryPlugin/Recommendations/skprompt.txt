@@ -49,7 +49,7 @@ Explains in detail why these recommendations are.
 3. than imagine futur collection that customer will be inresteing in. give new futur product example.
 
 4. Than imagine and suggest a new {{$brand}}'s event that customer will may be join.
-5. Than propose the What's app message to send to the client for the event. Keep clear format with words spaces.
+5. Than propose the What's app message to send to the client for the event in the same format that other part. 
 6. Than suggest the Ton that the advisor can use with the customer. Consider different culture too.
 7. Than summarize customer service data and advice for the advisor
 

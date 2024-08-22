@@ -12,12 +12,12 @@
   },
   "input_variables": [
     {
-      "name": "input",
+      "name": "brand",
       "description": "The brand that will be the overall context of the book",
       "default": ""
     },
     {
-      "name": "memory",
+      "name": "history",
       "description": "context for which to generate new chapter",
       "default": ""
     },
@@ -27,7 +27,7 @@
       "default": ""
     },
     {
-      "name": "last_purchase",
+      "name": "lastPurchase",
       "description": "the last purchased product for which to generate the chapter",
       "default": ""
     }
