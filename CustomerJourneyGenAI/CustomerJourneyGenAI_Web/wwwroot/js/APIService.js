@@ -57,6 +57,25 @@ function postAPI($spin, $result, url, d) {
     });
 }
 
+function getAPI($spin, $result, url) {
+    OnlySpinOn($spin);
+    $.ajax({
+        url: domainBase + url,
+        type: "GET",        
+        success: function (response) {
+            OnlySpinOff($spin);
+
+            $result.css("display", "inherit");
+            $result.removeClass("invisible");
+            $result.html(response.htmlContent);
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
 function OnlySpinOn($spin) {
     $spin.removeClass("invisible");
     $spin.css("display", "inline-block");

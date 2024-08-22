@@ -1,0 +1,160 @@
+﻿ <script src="~/js/customerHistory.js" defer></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="promptModal" tabindex="-1" aria-labelledby="promptModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="promptModalLabel">Prompt</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="PromptResult" class="pre" data-url="@Url.Action("GetPrompt", "Prompt")">
+                            <span id="resultPrompt"></span>
+                            <div id="spinPrompt" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-3">
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action active" id="CLIENT" onclick="GetPersona('CLIENT');" aria-current="true" data-url="CustomerHistory/history?id=CLIENT">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Sophie Dupont</div>
+                    name="Sophie Dupont", age=34; birthday="March 15th", Client"
+                </div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action" id="VIC" onclick="GetPersona('VIC');" aria-current="true" data-url="CustomerHistory/history?id=VIC">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Yuki Tanaka</div>
+                    name="Yuki Tanaka", age=45, birthday:"April 22th", VIP
+                </div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action" id="PROSPECT" onclick="GetPersona('PROSPECT');" aria-current="true" data-url="CustomerHistory/history?id=PROSPECT">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">John Smith</div>
+                    name="John Smith", age=38, birthday:"Septembre 09th", PROSPECT
+                </div>
+            </button>
+
+        </div>
+    </div>
+    <div class="col">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-tab-pane" type="button" role="tab" aria-controls="history-tab-pane" aria-selected="true">Customer History</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reco-tab" data-bs-toggle="tab" data-bs-target="#reco-tab-pane" type="button" role="tab" aria-controls="reco-tab-pane" aria-selected="false">Prepare Meeting</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book-tab-pane" type="button" role="tab" aria-controls="book-tab-pane" aria-selected="false">Book...</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="history-tab-pane" role="tabpanel" aria-labelledby="history-tab" tabindex="0">
+                <div class="pre" id="graph-container"></div>
+                <div id="HistoryResult" class="mt-3 pre text-left invisible">
+                    <span id="resultHistory"></span>
+                </div>
+
+
+                <div id="spinHistory" class="mt-3 invisible">
+                    <span class="spinner-border" role="status">
+                    </span>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="reco-tab-pane" role="tabpanel" aria-labelledby="reco-tab" tabindex="0">
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <button class="btn btn-primary" onclick="GetRecommendations();">Prepare Meeting</button>
+                        <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Recommendations', 'CustomerHistoryPlugin');"></i>
+                    </div>
+                    <div class="col-2">
+                        Language :
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control" type="text" id="language" value="French" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="RecoResult" class="pre" data-url="CustomerHistory/customerRecommendations">
+                            <span id="resultReco"></span>
+                            <div id="spinReco" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="book-tab-pane" role="tabpanel" aria-labelledby="book-tab" tabindex="0">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <input type="text" class="w-50" id="bookType" placeholder="Enter The style of your book (default Medieval Fantastic)">
+                        <button class="btn btn-primary" onclick="CreateBook();">Start Your Book</button>
+                        <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('StartBook', 'BookPlugin');"></i>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="BookResult" class="pre" data-url="@Url.Action("CreateBook", "CustomerHistory")">
+                            <span id="resultBook"></span>
+                            <div id="spinBook" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <input type="text" class="w-50" id="product" placeholder="Enter product name">
+                        <button class="btn btn-primary" onclick="AddChapter();">Purchase</button>
+                        <i class="fa-solid fa-circle-info btn" data-bs-toggle="modal" data-bs-target="#promptModal" onclick="GetPrompt('Chapter', 'BookPlugin');"></i>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <div id="ChapterResult" class="pre" data-url="@Url.Action("AddChapter", "CustomerHistory")">
+                            <span id="resultChapter"></span>
+                            <div id="spinChapter" class="invisible">
+                                <span class="spinner-border" role="status">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        _persona = "CLIENT";
+        GetHistory(_persona);
+        CreateGraph(_persona);
+    });
+</script>

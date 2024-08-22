@@ -19,11 +19,11 @@ namespace CustomerJourney_API.Controllers
         };
 
 
-        private readonly ILogger<MarketingController> _logger;
+        private readonly ILogger<CustomerServiceController> _logger;
 
         private readonly LLMResponse _response;
 
-        public CustomerServiceController(ILogger<MarketingController> logger, LLMResponse response)
+        public CustomerServiceController(ILogger<CustomerServiceController> logger, LLMResponse response)
         {
             _logger = logger;
             _response = response;
