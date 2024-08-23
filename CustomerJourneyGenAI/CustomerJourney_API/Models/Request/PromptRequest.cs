@@ -1,6 +1,6 @@
 ﻿namespace CustomerJourney.API.Models
 {
-    public class Prompt
+    public class PromptRequest
     {
         public string FunctionName { get; set; } = string.Empty;
 

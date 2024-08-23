@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ILogger>(sp => sp.GetRequiredService<ILogger<Program>>())
     .AddOptions(builder.Configuration)
     .AddAIResponses()
+    .AddPromptService()
     .AddSemanticKernelServices();
 
 

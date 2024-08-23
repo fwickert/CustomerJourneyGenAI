@@ -1,5 +1,5 @@
 ﻿using CustomerJourney.API.Models;
-using CustomerJourney_API.Services;
+using CustomerJourney.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerJourney_API.Controllers
@@ -15,9 +15,9 @@ namespace CustomerJourney_API.Controllers
             _dashboardService = dashboardService;
         }
 
-        [HttpPost]
+        [HttpPost("getPrompt", Name = "getPrompt")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<string> Post([FromBody] Prompt prompt)
+        public async Task<string> Post([FromBody] PromptRequest prompt)
         {
             return await _dashboardService.GetPrompt(prompt.FunctionName, prompt.Plugin);
         }

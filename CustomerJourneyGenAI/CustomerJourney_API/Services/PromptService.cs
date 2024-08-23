@@ -1,6 +1,6 @@
 ﻿using CustomerJourney.API.Utilities;
 
-namespace CustomerJourney_API.Services
+namespace CustomerJourney.API.Services
 {
     public class PromptService
     {

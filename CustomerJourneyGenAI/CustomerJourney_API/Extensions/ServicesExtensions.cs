@@ -68,6 +68,14 @@ namespace CustomerJourney.API.Extensions
             return services;
         }
 
+
+        internal static IServiceCollection AddPromptService(this IServiceCollection services)
+        {
+            services.AddScoped<PromptService>();
+
+            return services;
+        }
+
         /// <summary>
         /// Trim all string properties, recursively.
         /// </summary>
