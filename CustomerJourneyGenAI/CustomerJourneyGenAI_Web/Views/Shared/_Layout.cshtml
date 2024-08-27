@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -66,7 +68,7 @@
     </header>
     <div class="">
         <main role="main" class="pb-3">
-            <div id="envData" data-environment="@Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")"></div>
+            <div id="envData" data-environment="@Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")" data-domainBase="@Configuration["API:Base"]"></div>
             @RenderBody()
         </main>
     </div>

@@ -1,20 +1,6 @@
-﻿//GetDomainBase depend on Config file
-var env = document.getElementById("envData").getAttribute("data-environment");
-var domainBase = "";
-var domainHub = "";
-switch (env) {
-    case "Development":
-        domainBase = "https://localhost:7165/api/";
-        domainHub = "https://localhost:7165/";
-        break;
-    case "Production":
-        domainBase = "";
-        break;
-    default:
-        domainBase = "https://localhost:7165/api/";
-}
-
-
+﻿var base = document.getElementById("envData").getAttribute("data-domainBase");
+var domainBase = base + "api/";
+var domainHub = base;
 
 
 function postAPIAsync($spin, $result, url, d) {
