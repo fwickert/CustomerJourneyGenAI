@@ -397,8 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /CustomerJourneyGenAI/CustomerJourney_Web/appsettings.Development.json
-/CustomerJourneyGenAI/CustomerJourney_Web/Properties
-/CustomerJourneyGenAI/CustomerJourney_API/Properties
 /CustomerJourneyGenAI/CustomerJourney_API/appsettings.Development.json
-/CustomerJourneyGenAI/CustomerJourneyGenAI_Web/Properties
 /CustomerJourneyGenAI/CustomerJourneyGenAI_Web/appsettings.Development.json
