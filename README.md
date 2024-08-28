@@ -37,9 +37,9 @@ In this demo you can listen un audio file from a call center (discussin between 
 
 - Now you can use the other features, like summarize, sentiments analysis etc. Don't forget to first create the summary (the text behond is use for some other features, like translate).
 
-## Use it Localy
+## Use it Locally
 
-to use this demo localy, you need and Azure OpenAI service and set the endpoint, key and model name in the appsettings.json file in the API project.
+to use this demo locally, you need and Azure OpenAI service and set the endpoint, key and model name in the appsettings.json file in the API project.
 
 ![Settings](assets/settings.png)
 
